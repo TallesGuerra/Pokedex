@@ -83,13 +83,13 @@ private val DarkColorScheme = darkColorScheme(
 
 // ===== TEMA PRINCIPAL =====
 @Composable
-fun PokédexTheme(
+fun PokedexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        // Android 12+ com dynamic colors
+
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
@@ -116,7 +116,7 @@ fun PokédexTheme(
 
 // ===== ATALHOS PARA CORES CUSTOMIZADAS =====
 @Composable
-fun PokemonTypeColor(type: String): androidx.compose.ui.graphics.Color {
+fun pokemonTypeColor(type: String): Color {
     return when (type.lowercase()) {
         "normal" -> PokemonTypeColors.Normal
         "fire" -> PokemonTypeColors.Fire

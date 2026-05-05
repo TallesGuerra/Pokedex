@@ -7,10 +7,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// ===== FONTE CUSTOMIZADA (Optional: Roboto já está disponível) =====
+
 private val RobotoFontFamily = FontFamily.Default
 
-// ===== TIPOGRAFIA MATERIAL 3 CUSTOMIZADA =====
 val PokédexTypography = Typography(
     // Headlines
     displayLarge = TextStyle(
