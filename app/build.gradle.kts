@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.pokedex"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.pokedex"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -46,6 +46,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.compose.runtime.livedata)
+    implementation(libs.androidx.compose.ui.ui)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,9 +59,13 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.androidx.ui)
 
     // Retrofit + OkHttp
     implementation(libs.bundles.retrofit)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
 
     // Jetpack
     implementation(libs.bundles.jetpack)
@@ -70,6 +75,8 @@ dependencies {
 
     // Room
     implementation(libs.bundles.room)
+    implementation(libs.play.services.maps)
+    implementation(libs.ui)
     ksp(libs.androidx.room.compiler)
 
     // Glide

@@ -14,7 +14,7 @@ import com.example.pokedex.data.repository.PokemonRepositoryImpl
 import com.example.pokedex.presentation.ui.screens.PokemonDetailScreen
 import com.example.pokedex.presentation.ui.screens.PokemonListScreen
 import com.example.pokedex.presentation.ui.screens.SplashScreen
-import com.example.pokedex.presentation.ui.theme.PokédexTheme
+import com.example.pokedex.presentation.ui.theme.PokedexTheme
 import com.example.pokedex.presentation.viewmodel.PokemonDetailViewModel
 import com.example.pokedex.presentation.viewmodel.PokemonListViewModel
 
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PokédexTheme {
+            PokedexTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

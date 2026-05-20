@@ -22,7 +22,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Circle
+import androidx.compose.material3.Icon
 import com.example.pokedex.presentation.ui.theme.PrimaryColor
+
 import kotlinx.coroutines.delay
 
 /**
@@ -87,10 +91,8 @@ fun SplashScreen(onNavigateToList: () -> Unit) {
  */
 @Composable
 fun PokeballIcon(modifier: Modifier = Modifier) {
-    androidx.compose.material3.Icon(
-        painter = androidx.compose.material.icons.rememberVectorPainter(
-            androidx.compose.material.icons.rounded.Circle
-        ),
+    Icon(
+        imageVector = Icons.Rounded.Circle,
         contentDescription = "Poké Ball",
         tint = PrimaryColor,
         modifier = modifier
