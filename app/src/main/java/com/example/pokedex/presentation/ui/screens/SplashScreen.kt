@@ -29,14 +29,6 @@ import com.example.pokedex.presentation.ui.theme.PrimaryColor
 
 import kotlinx.coroutines.delay
 
-/**
- * SplashScreen: Tela inicial com animação
- *
- * Mostra:
- * - Poké Ball animada
- * - Texto "Pokédex"
- * - Transição para lista após 2 segundos
- */
 @Composable
 fun SplashScreen(onNavigateToList: () -> Unit) {
     var alpha by remember { mutableFloatStateOf(0f) }
@@ -86,9 +78,6 @@ fun SplashScreen(onNavigateToList: () -> Unit) {
     }
 }
 
-/**
- * PokeballIcon: Componente de Poké Ball
- */
 @Composable
 fun PokeballIcon(modifier: Modifier = Modifier) {
     Icon(

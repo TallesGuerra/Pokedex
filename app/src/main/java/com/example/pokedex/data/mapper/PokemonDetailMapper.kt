@@ -5,7 +5,7 @@ import com.example.pokedex.domain.model.PokemonDetail
 import com.example.pokedex.utils.formatHeight
 import com.example.pokedex.utils.formatWeight
 import com.example.pokedex.utils.formatPokemonId
-import com.example.pokedex.utils.getPokemonImageUrl
+import com.example.pokedex.utils.getImageUrlFromSprites
 
 object PokemonDetailMapper {
     fun toDomain(dto: PokemonDetailDto): PokemonDetail {
@@ -13,7 +13,11 @@ object PokemonDetailMapper {
             id = dto.id,
             name = dto.name.capitalize(),
             pokedexId = formatPokemonId(dto.id),
-            imageUrl = getPokemonImageUrl(dto.id),
+
+            imageUrl = getImageUrlFromSprites(
+                officialArtwork = dto.sprites.other?.officialArtwork?.frontDefault,
+                frontDefault = dto.sprites.frontDefault
+            ),
             types = dto.types.map { it.type.name.capitalize() },
             height = formatHeight(dto.height),
             weight = formatWeight(dto.weight),

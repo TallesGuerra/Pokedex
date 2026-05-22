@@ -46,9 +46,6 @@ import com.example.pokedex.presentation.ui.theme.PrimaryColor
 import com.example.pokedex.presentation.ui.theme.SurfaceColor
 import com.example.pokedex.presentation.viewmodel.PokemonListViewModel
 
-/**
- * PokemonListScreen: Lista em grid de pokémons
- */
 @Composable
 fun PokemonListScreen(
     viewModel: PokemonListViewModel,

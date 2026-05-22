@@ -10,15 +10,7 @@ import com.example.pokedex.domain.repository.PokemonRepository
 import com.example.pokedex.presentation.state.UiState
 import kotlinx.coroutines.launch
 
-/**
- * PokemonListViewModel: Gerencia estado e lógica da lista de pokémons
- *
- * Responsabilidades:
- * - Carregar lista com paginação
- * - Buscar por nome
- * - Gerenciar estado (Loading, Success, Error, Empty)
- * - Não tem lógica de UI (Activity/Composable apenas observa)
- */
+
 class PokemonListViewModel(
     private val repository: PokemonRepository
 ) : ViewModel() {
@@ -35,9 +27,6 @@ class PokemonListViewModel(
     // Busca
     private var currentSearchQuery = ""
 
-    /**
-     * Carrega primeira página de pokémons
-     */
     fun loadPokemons() {
         viewModelScope.launch {
             _pokemons.value = UiState.Loading
@@ -62,9 +51,7 @@ class PokemonListViewModel(
         }
     }
 
-    /**
-     * Carrega mais pokémons (paginação)
-     */
+
     fun loadMore() {
         viewModelScope.launch {
             // Se já é sucesso, mostra loading parcial
@@ -86,13 +73,9 @@ class PokemonListViewModel(
         }
     }
 
-    /**
-     * Busca pokémon por nome
-     * @param query nome do pokémon ("pikachu", "charizard", etc)
-     */
+
     fun search(query: String) {
         currentSearchQuery = query
-
         viewModelScope.launch {
             if (query.isEmpty()) {
                 // Se vazio, volta para lista completa
@@ -129,9 +112,7 @@ class PokemonListViewModel(
         }
     }
 
-    /**
-     * Tenta carregar novamente (retry)
-     */
+
     fun retry() {
         if (currentSearchQuery.isEmpty()) {
             loadPokemons()

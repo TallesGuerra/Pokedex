@@ -1,19 +1,21 @@
 package com.example.pokedex.data.mapper
 
-import com.example.pokedex.data.dto.PokemonDto
 import com.example.pokedex.data.dto.PokemonDetailDto
 import com.example.pokedex.domain.model.Pokemon
 import com.example.pokedex.utils.formatPokemonId
 import com.example.pokedex.utils.getPokemonImageUrl
 
 object PokemonMapper {
-
     fun toDomain(dto: PokemonDetailDto): Pokemon {
+        val imageUrl = dto.sprites.other?.officialArtwork?.frontDefault
+            ?: dto.sprites.frontDefault
+            ?: getPokemonImageUrl(dto.id)
+
         return Pokemon(
             id = dto.id,
             name = dto.name.capitalize(),
             pokedexId = formatPokemonId(dto.id),
-            imageUrl = getPokemonImageUrl(dto.id),
+            imageUrl = imageUrl,
             types = dto.types.map { it.type.name.capitalize() },
             hp = dto.stats.find { it.stat.name == "hp" }?.baseStat ?: 0,
             attack = dto.stats.find { it.stat.name == "attack" }?.baseStat ?: 0,

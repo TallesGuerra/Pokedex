@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,6 +15,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -39,9 +41,6 @@ import com.example.pokedex.presentation.ui.theme.PrimaryColor
 import com.example.pokedex.presentation.ui.theme.SurfaceColor
 import com.example.pokedex.presentation.viewmodel.PokemonDetailViewModel
 
-/**
- * PokemonDetailScreen: Detalhe completo de um pokémon
- */
 @Composable
 fun PokemonDetailScreen(
     viewModel: PokemonDetailViewModel,
@@ -71,7 +70,7 @@ fun PokemonDetailScreen(
                 modifier = Modifier.align(Alignment.TopStart)
             ) {
                 Icon(
-                    Icons.Rounded.ArrowBack,
+                    Icons.AutoMirrored.Rounded.ArrowBack,
                     contentDescription = "Voltar",
                     tint = Color.White
                 )
@@ -124,7 +123,8 @@ fun PokemonDetailContent(pokemon: PokemonDetail) {
                 .size(240.dp)
                 .background(SurfaceColor, RoundedCornerShape(12.dp))
                 .padding(16.dp),
-            contentScale = ContentScale.Fit
+            contentScale = ContentScale.Fit,
+
         )
 
         // Nome + ID

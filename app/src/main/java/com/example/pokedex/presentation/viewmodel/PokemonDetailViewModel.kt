@@ -10,14 +10,7 @@ import com.example.pokedex.domain.repository.PokemonRepository
 import com.example.pokedex.presentation.state.UiState
 import kotlinx.coroutines.launch
 
-/**
- * PokemonDetailViewModel: Gerencia estado do detalhe de um pokémon
- *
- * Responsabilidades:
- * - Carregar detalhes completo de um pokémon por ID
- * - Gerenciar estado (Loading, Success, Error)
- * - Permitir retry se falhar
- */
+
 class PokemonDetailViewModel(
     private val repository: PokemonRepository
 ) : ViewModel() {
@@ -29,13 +22,8 @@ class PokemonDetailViewModel(
     // Guarda ID para retry
     private var lastPokemonId: String? = null
 
-    /**
-     * Carrega detalhes de um pokémon
-     * @param id ID ou nome do pokémon (ex: "25" ou "pikachu")
-     */
     fun loadPokemon(id: String) {
         lastPokemonId = id
-
         viewModelScope.launch {
             _pokemon.value = UiState.Loading
 
@@ -43,7 +31,8 @@ class PokemonDetailViewModel(
 
             _pokemon.value = when (result) {
                 is Result.Success -> {
-                    UiState.Success(result.data)
+                    val pokemon = result.data
+                    UiState.Success(pokemon)
                 }
                 is Result.Error -> {
                     UiState.Error(result.exception.message ?: "Erro ao carregar detalhes")
@@ -52,12 +41,9 @@ class PokemonDetailViewModel(
         }
     }
 
-    /**
-     * Tenta carregar novamente (retry)
-     */
     fun retry() {
         lastPokemonId?.let { id ->
-            loadPokemon(id)
+           loadPokemon(id)
         }
     }
 }

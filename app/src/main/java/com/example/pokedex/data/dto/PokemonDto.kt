@@ -1,8 +1,5 @@
 package com.example.pokedex.data.dto
 
-import com.google.gson.annotations.SerializedName
-
-
 data class PokemonDto(
     val name: String,
     val url: String

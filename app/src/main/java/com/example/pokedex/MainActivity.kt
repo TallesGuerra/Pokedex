@@ -3,10 +3,13 @@ package com.example.pokedex
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -19,6 +22,24 @@ import com.example.pokedex.presentation.viewmodel.PokemonDetailViewModel
 import com.example.pokedex.presentation.viewmodel.PokemonListViewModel
 
 class MainActivity : ComponentActivity() {
+
+    private val repository = PokemonRepositoryImpl()
+
+    private val factory = object : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return when {
+                modelClass.isAssignableFrom(PokemonListViewModel::class.java) ->
+                    PokemonListViewModel(repository) as T
+                modelClass.isAssignableFrom(PokemonDetailViewModel::class.java) ->
+                    PokemonDetailViewModel(repository) as T
+                else -> throw IllegalArgumentException("ViewModel desconhecido: $modelClass")
+            }
+        }
+    }
+
+    private val listViewModel: PokemonListViewModel by viewModels { factory }
+    private val detailViewModel: PokemonDetailViewModel by viewModels { factory }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -27,16 +48,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // NavController para navegar entre telas
                     val navController = rememberNavController()
-
-                    // Repository (será injetado depois com Hilt)
-                    val repository = PokemonRepositoryImpl()
-
-                    // ViewModels
-                    val listViewModel = PokemonListViewModel(repository)
-                    val detailViewModel = PokemonDetailViewModel(repository)
-
                     NavHost(
                         navController = navController,
                         startDestination = "splash"
