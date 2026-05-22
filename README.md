@@ -8,14 +8,12 @@ Desenvolvido durante o curso **Android Avançado** da **Escola Nova Era Tech** c
 
 ## 📱 Download APK
 
-**Opção mais rápida e direta:**
-
-[![Download APK](https://img.shields.io/badge/Download-APK%20v1.0.0-green?style=for-the-badge&logo=android)](https://github.com/TallesGuerra/Pokedex/releases/tag/v1.0.0)
+[![Download APK](https://img.shields.io/badge/Download-APK%20v1.0.1-green?style=for-the-badge&logo=android)](https://github.com/TallesGuerra/Pokedex/releases/tag/v1.0.1)
 
 ### **Como instalar:**
-1. Clique no botão acima ou [acesse aqui](https://github.com/TallesGuerra/Pokedex/releases/tag/v1.0.0)
+1. Clique no botão acima ou [acesse aqui](https://github.com/TallesGuerra/Pokedex/releases/tag/v1.0.1)
 2. No seu Android, vá em **Configurações → Segurança → Fontes desconhecidas** e ative
-3. Localize o arquivo `Pokedex-v1.0.0.apk` e toque para instalar
+3. Localize o arquivo `Pokedex-v1.0.1.apk` e toque para instalar
 4. Abra e aproveite! 🎮
 
 **Requisitos mínimos:**
